@@ -12,8 +12,7 @@ body {
 #messages li { 
   padding: 8px; margin-bottom: 10px; border-radius: 20px; display: flex; flex-direction: column; 
 }
-#message-input {
-  max-width: 70%; padding: 10px; font-size: 1rem; border-radius: 20px; background-color: #444; color: white; border: 1px solid transparent;
+#message-input {width: 60%; max-width: 500px; padding: 10px; font-size: 1rem; border-radius: 20px; background-color: #444; color: white; border: 1px solid transparent;
 }
 .message-container { display: flex; flex-direction: column; align-items: flex-start; }
 .message-container.my-message { align-items: flex-end; }
@@ -46,7 +45,13 @@ button:hover { background: #a1a1a1; }
 #chat-container { display: flex; flex-direction: column; justify-content: space-between; height: 80vh; max-height: 650px; background-color: #212121; padding: 20px; border-radius: 30px; }
 #messages { overflow-y: scroll; max-height: 500px; width: 100%; }
 #messages::-webkit-scrollbar { display: none; }
-#chat-form { position: absolute; bottom: 20px; left: 20px; right: 20px; }
+#chat-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+}
 #chatroom-welcome { text-align: center; padding: 10px 0; display: none; }
 #chatroom-welcome h2 { font-size: 2em; font-weight: bold; color: #d3d3d3; }
 @media (max-width: 768px) {
