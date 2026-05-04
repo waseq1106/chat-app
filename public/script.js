@@ -31,7 +31,11 @@ loginButton.addEventListener('click', () => {
   }
 });
 
-
+idInput.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    loginButton.click();
+  }
+});
 
 // Handle message submission
 chatForm.addEventListener('submit', (e) => {
