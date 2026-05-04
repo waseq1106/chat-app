@@ -17,45 +17,59 @@ body {
   align-items: center;
 }
 
-/* LOGIN + CHAT */
-#login-container,
+/* LOGIN SCREEN (CENTER FIXED) */
+#login-container {
+  width: 100%;
+  max-width: 400px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  padding: 20px;
+  border-radius: 20px;
+}
+
+/* CHAT APP FRAME */
 #chat-container {
   width: 100%;
   max-width: 400px;
-}
-
-/* CHAT BOX */
-#chat-container {
   height: 85vh;
+
   display: flex;
   flex-direction: column;
 
   padding: 20px;
   border-radius: 20px;
+
   overflow: hidden;
 }
 
-/* WELCOME (if exists) */
+/* WELCOME TEXT */
 #chatroom-welcome {
-  flex-shrink: 0;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
-/* MESSAGES AREA */
+/* MESSAGES AREA (ONLY SCROLL AREA) */
 #messages {
   flex: 1;
-  overflow-y: auto;
   min-height: 0;
+  overflow-y: auto;
 
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
+/* HIDE SCROLLBAR */
 #messages::-webkit-scrollbar {
   display: none;
 }
 
-/* MESSAGE ITEMS */
+/* MESSAGE STYLE */
 #messages li {
   margin-bottom: 10px;
   display: flex;
@@ -96,7 +110,15 @@ body {
   background: #393a41;
 }
 
-/* INPUT */
+/* REACTIONS (IMPORTANT FIX) */
+.reaction-buttons {
+  display: none; /* IMPORTANT: default hidden */
+  gap: 8px;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+/* INPUT BAR (ALWAYS FIXED AT BOTTOM) */
 #chat-form {
   display: flex;
   gap: 10px;
@@ -121,4 +143,5 @@ button {
   border-radius: 50%;
   border: none;
   background: #d3d3d3;
+  cursor: pointer;
 }
