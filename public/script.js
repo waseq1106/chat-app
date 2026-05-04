@@ -67,8 +67,6 @@ socket.on('chat message', (data) => {
     nameElem.classList.add('name');
     nameElem.textContent = data.name;
     messageContainer.appendChild(nameElem);
-  } else {
-    messageContainer.style.marginTop = '-20px';
   }
 
   lastSender = data.name;
