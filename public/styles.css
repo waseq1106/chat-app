@@ -43,7 +43,7 @@ button:hover { background: #a1a1a1; }
 #login-button:hover { background: #a1a1a1; }
 .fa-angle-right { font-size: 1em; }
 #chat-container { display: flex; flex-direction: column; justify-content: space-between; height: 80vh; max-height: 650px; background-color: #212121; padding: 20px; border-radius: 30px; }
-#messages { overflow-y: scroll; max-height: 500px; width: 100%; padding-bottom: 80px; }
+#messages { overflow-y: scroll; max-height: 500px; width: 100%; padding-bottom: 10vh; }
 #messages::-webkit-scrollbar { display: none; }
 #chat-form {
   position: fixed;
