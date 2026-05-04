@@ -1,101 +1,119 @@
-body { 
-  font-family: 'Montserrat', sans-serif; 
-  margin: 0; 
-  padding: 0; 
-  display: flex; 
-  flex-direction: column; 
-  align-items: center; 
-  background-color: #212121; 
-  color: white;
-  height: 100vh; 
+/* ── BASE ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
   overflow: hidden;
+  background-color: #212121;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* ── LOGIN ── */
 #login-container {
-  text-align: center; 
-  display: flex; 
-  flex-direction: column; 
-  align-items: center; 
-  justify-content: center; 
-  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   max-width: 400px;
+  height: 100%;
   padding: 20px;
-  box-sizing: border-box;
+  text-align: center;
 }
 #login-container h2 {
-  margin-bottom: 20px;
+  margin: 0 0 20px 0;
 }
 #login-container > div {
-  display: flex; 
+  display: flex;
   align-items: center;
   width: 100%;
 }
 #id-input {
-  flex: 1; 
-  border: none; 
-  border-radius: 25px; 
-  padding: 0 15px; 
-  margin-right: 10px; 
+  flex: 1;
+  min-width: 0;
   height: 40px;
-  font-size: 1em;
+  padding: 0 15px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 25px;
   background-color: #444;
   color: white;
+  font-size: 1em;
+  font-family: 'Montserrat', sans-serif;
   outline: none;
 }
 #login-button {
-  font-size: 1.2em; 
-  padding: 8px; 
-  background: #d3d3d3; 
-  color: #212121; 
-  border: none; 
-  border-radius: 50%; 
-  width: 40px; 
-  height: 40px;
-  display: flex; 
-  justify-content: center; 
-  align-items: center; 
-  cursor: pointer;
   flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #d3d3d3;
+  color: #212121;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.2em;
+  cursor: pointer;
 }
 #login-button:hover { background: #a1a1a1; }
 
-/* ── CHAT CONTAINER ── */
-#chat-container { 
-  display: flex; 
-  flex-direction: column; 
+/* ── CHAT CONTAINER ──
+   Fills the body, uses flex column so:
+   header (shrink 0) + messages (flex 1, scrolls) + form (shrink 0)
+*/
+#chat-container {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   max-width: 600px;
+  /* fill whatever height body has */
+  flex: 1;
+  min-height: 0;
+  /* fallback for browsers without dvh */
   height: 100vh;
+  /* preferred: respects mobile browser chrome */
   height: 100dvh;
-  box-sizing: border-box;
-  background-color: #212121; 
+  background-color: #212121;
 }
 
 /* ── WELCOME HEADER ── */
-#chatroom-welcome { 
-  text-align: center; 
-  padding: 16px 20px 8px;
+#chatroom-welcome {
   flex-shrink: 0;
+  text-align: center;
+  padding: 16px 20px 8px;
 }
-#chatroom-welcome h2 { 
-  font-size: 1.1em; 
+#chatroom-welcome h2 {
+  margin: 0;
+  font-size: 1.1em;
   font-weight: 600;
   color: #d3d3d3;
-  margin: 0;
 }
 
-/* ── MESSAGES LIST ── */
-#messages { 
-  list-style-type: none; 
-  margin: 0; 
-  padding: 10px 16px 8px;
+/* ── MESSAGES LIST ──
+   flex: 1 + min-height: 0 is the key combo that makes it
+   scroll instead of pushing the form off-screen
+*/
+#messages {
   flex: 1;
+  min-height: 0;          /* CRITICAL — without this flex child won't shrink */
   overflow-y: auto;
+  list-style: none;
+  margin: 0;
+  padding: 10px 16px 8px;
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
   width: 100%;
 }
 
@@ -103,22 +121,24 @@ body {
 #messages::-webkit-scrollbar-track { background: transparent; }
 #messages::-webkit-scrollbar-thumb { background: #555; border-radius: 4px; }
 
-#messages li { 
-  padding: 0;
-  margin-bottom: 4px;
+#messages li {
   display: flex;
   flex-direction: column;
   width: 100%;
+  /* gap between consecutive messages from same sender */
+  margin-bottom: 6px;
 }
 
 /* ── MESSAGE BUBBLES ── */
-.message-container { 
-  display: flex; 
-  flex-direction: column; 
+.message-container {
+  display: flex;
+  flex-direction: column;
   align-items: flex-start;
   max-width: 80%;
+  /* gap between bubble and the next bubble (consecutive messages) */
+  margin-bottom: 4px;
 }
-.message-container.my-message { 
+.message-container.my-message {
   align-items: flex-end;
   align-self: flex-end;
 }
@@ -126,90 +146,95 @@ body {
   align-self: flex-start;
 }
 
-.name { 
-  font-weight: bold; 
-  font-size: 0.75em; 
-  margin-bottom: 4px; 
-  color: #d3d3d3; 
+.name {
+  font-weight: bold;
+  font-size: 0.75em;
+  margin-bottom: 4px;
+  color: #d3d3d3;
   padding: 0 4px;
 }
-.text { 
-  font-size: 0.95em; 
-  word-wrap: break-word; 
+
+.text {
+  font-size: 0.95em;
+  word-wrap: break-word;
   word-break: break-word;
-  padding: 10px 14px; 
+  padding: 10px 14px;
   border-radius: 20px;
+  line-height: 1.4;
 }
-.my-message .text { 
-  background-color: #3a3b3a; 
-  color: white; 
+.my-message .text {
+  background-color: #3a3b3a;
+  color: white;
   border-bottom-right-radius: 4px;
 }
-.other-message .text { 
-  background-color: #4a4b52; 
-  color: white; 
+.other-message .text {
+  background-color: #4a4b52;
+  color: white;
   border-bottom-left-radius: 4px;
 }
 
 /* ── REACTIONS ── */
-.reaction-buttons { 
+.reaction-buttons {
   display: none;
-  margin-top: 4px; 
-  cursor: pointer; 
+  margin-top: 4px;
   font-size: 1.2em;
   gap: 4px;
+  cursor: pointer;
 }
 .reaction-button { cursor: pointer; }
 .reaction-button:hover { opacity: 0.7; }
-.reactions { 
-  margin-top: 2px; 
-  font-size: 0.9em; 
-  display: flex; 
-  gap: 6px; 
+.reactions {
+  margin-top: 2px;
+  font-size: 0.9em;
+  display: flex;
+  gap: 6px;
   flex-wrap: wrap;
 }
 .reactions span { cursor: pointer; }
 
-/* ── CHAT FORM ── */
-#chat-form { 
-  display: flex; 
-  width: 100%; 
-  padding: 10px 16px;
-  padding-bottom: max(16px, env(safe-area-inset-bottom));
-  box-sizing: border-box;
+/* ── CHAT FORM ──
+   flex-shrink: 0 keeps it from being squished.
+   It always sits at the bottom because it comes last in the flex column.
+*/
+#chat-form {
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px 16px;
+  /* iPhone home-bar safe area */
+  padding-bottom: max(14px, env(safe-area-inset-bottom));
   background-color: #212121;
 }
 
 #message-input {
-  flex: 1; 
-  padding: 10px 16px; 
-  font-size: 1rem; 
-  border-radius: 20px; 
-  background-color: #444; 
-  color: white; 
+  flex: 1;
+  min-width: 0;
+  padding: 10px 16px;
+  font-size: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  border-radius: 20px;
+  background-color: #444;
+  color: white;
   border: 1px solid transparent;
   outline: none;
   margin-right: 10px;
-  font-family: 'Montserrat', sans-serif;
-  min-width: 0;
 }
 #message-input::placeholder { color: #999; }
 
-#chat-form button { 
-  padding: 8px; 
-  background: #d3d3d3; 
-  color: #212121; 
-  border: none; 
-  border-radius: 50%; 
-  font-size: 1.2em; 
-  width: 42px; 
-  height: 42px; 
-  display: flex; 
-  justify-content: center; 
-  align-items: center;
-  cursor: pointer;
+#chat-form button {
   flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #d3d3d3;
+  color: #212121;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.2em;
+  cursor: pointer;
 }
 #chat-form button:hover { background: #a1a1a1; }
 
