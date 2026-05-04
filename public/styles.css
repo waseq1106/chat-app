@@ -39,7 +39,16 @@ button:hover { background: #a1a1a1; }
 }
 #login-button:hover { background: #a1a1a1; }
 .fa-angle-right { font-size: 1em; }
-#chat-container { display: flex; flex-direction: column; justify-content: space-between; height: 80vh; max-height: 650px; background-color: #212121; padding: 20px; border-radius: 30px; }
+#chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+  max-height: 650px;
+  background-color: #212121;
+  padding: 20px;
+  border-radius: 30px;
+  overflow: hidden;
+}
 #messages {
   flex: 1;
   overflow-y: auto;
