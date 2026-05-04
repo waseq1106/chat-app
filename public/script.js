@@ -31,7 +31,7 @@ loginButton.addEventListener('click', () => {
   }
 });
 
-idInput.addEventListener('keypress', (e) => {
+idInput.addEventListener('keydown', (e) => {
   if (e.key === 'Enter') {
     loginButton.click();
   }
